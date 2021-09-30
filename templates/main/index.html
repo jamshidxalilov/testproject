@@ -1,40 +1,45 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
-
-{% for r in report %}
-    <table class="table table-striped table-responsive-lg">
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Davlat</th>
                 <th scope="col">Viloyat</th>
                 <th scope="col">Tuman</th>
-                <th scope="col">Hamkor</th>
-                <th scope="col">Tashkilot</th>
-                <th scope="col">Tarmoq</th>
-                <th scope="col">Holat</th>
-                <th scope="col">Harakat</th>
-                <th scope="col">Anons</th>
-                <th scope="col">Natija</th>
-                <th scope="col">Muddat</th>
+{#                <th scope="col">Hamkor</th>#}
+{#                <th scope="col">Tashkilot</th>#}
+{#                <th scope="col">Tarmoq</th>#}
+{#                <th scope="col">Holat</th>#}
+{#                <th scope="col">Harakat</th>#}
+{#                <th scope="col">Anons</th>#}
+{#                <th scope="col">Natija</th>#}
+{#                <th scope="col">Muddat</th>#}
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">{{ r.id }}</th>
-                <td>{{ r.country }}</td>
-                <td>{{ r.region }}</td>
-                <td>{{ r.district }}</td>
-                <td>{{ r.partner.first }}</td>
-                <td>{{ r.organization.first }}</td>
-                <td>{{ r.branch.first }}</td>
-                <td>{{ r.status }}</td>
-                <td>{{ r.action}}</td>
-                <td>{{ r.anons }}</td>
-                <td>{{ r.result }}</td>
-                <td>{{ r.expire_at }}</td>
-            </tr>
+            {% for c in district %}
+                <tr>
+                    <td>{{ c.id }}</td>
+{#                    {% for d in c.district.all %}#}
+{#                    <td>{{ d }}</td>#}
+{#                    {% endfor %}#}
+                    <td>{{ c.country }}</td>
+                    <td>{{ c.region }}</td>
+                    <td>{{ c.name }}</td>
+{#                    <td>{{ r.partner.first }}</td>#}
+{#                    <td>{{ r.organization.first }}</td>#}
+{#                    <td>{{ r.branch.first }}</td>#}
+{#                    <td>{{ r.status }}</td>#}
+{#                    <td>{{ r.action}}</td>#}
+{#                    <td>{{ r.anons }}</td>#}
+{#                    <td>{{ r.result }}</td>#}
+{#                    <td>{{ r.expire_at }}</td>#}
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-{% endfor %}
+</div>
+
 {% endblock %}

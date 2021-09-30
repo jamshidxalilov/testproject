@@ -27,7 +27,7 @@ class Region(models.Model):
 class District(models.Model):
     country = models.ForeignKey(Country, on_delete=models.RESTRICT)
     region = models.ForeignKey(Region, on_delete=models.RESTRICT)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
 
     class Meta:
         verbose_name = 'Tuman'
@@ -36,6 +36,9 @@ class District(models.Model):
     def __str__(self):
         return self.name
 
+
+class Street(models.Model):
+    district = models.ManyToManyField(District)
 
 class Partner(models.Model):
     TYPES = (

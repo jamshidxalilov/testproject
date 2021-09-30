@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Country, Region, District, Partner, Organization, Branch, Status, Action, Report
+from .models import Country, Region, District, Partner, Organization, Branch, Status, Action, Report, Street
 
 class CountryAdmin(admin.ModelAdmin):
     list_display = [
@@ -26,6 +26,7 @@ admin.site.register(Region, RegionAdmin)
 
 class DistrictAdmin(admin.ModelAdmin):
     list_display = [
+        'id',
         'name',
         'country',
         'region'
@@ -85,3 +86,12 @@ class ReportAdmin(admin.ModelAdmin):
         model = Report
 
 admin.site.register(Report, ReportAdmin)
+
+
+class StreetAdmin(admin.ModelAdmin):
+    pass
+
+    class Meta:
+        model = Street
+
+admin.site.register(Street, StreetAdmin)

@@ -11,10 +11,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import environ
 from django.contrib import messages
 
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+environ.Env.read_env()
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -22,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o&#etydy$kyd@uszt=&mckowq8hj-%v+%1xj#7=*(&d0vkd&2n'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)
 
 
 # Application definition
@@ -79,12 +85,7 @@ WSGI_APPLICATION = 'testproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testproject',
-        'USER': 'root',
-        'PASSWORD': "Qwerty123$"
-    }
+    'default': env.db()
 }
 
 

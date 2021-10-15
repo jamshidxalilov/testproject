@@ -1,5 +1,12 @@
 asgiref==3.3.4
 Django==3.2.3
+<<<<<<< HEAD
 mysqlclient==2.0.3
+=======
+django-environ==0.4.5
+environ==1.0
+mysqlclient==2.0.3
+pkg-resources==0.0.0
+>>>>>>> origin/master
 pytz==2021.1
 sqlparse==0.4.1
